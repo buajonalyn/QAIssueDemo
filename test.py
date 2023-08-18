@@ -1,6 +1,6 @@
 from wallet import Wallet
 
-#test 1
+#test 1gi
 def test_getbalance():
     obj = Wallet(0)
     obj.set_balance(20)
