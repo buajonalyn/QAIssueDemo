@@ -1,0 +1,30 @@
+name: Workflow dispatch Test1
+
+on:  
+    workflow_dispatch:
+      inputs:
+        environment:
+          description: ' Which folder to run?'
+          required : true
+          default: 'standard'
+          type: choice
+          options:
+            - standard
+            - ev
+            - utility
+        
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest 
+    
+    steps:
+    - name : Checkout code
+      uses : actions/checkout@v3
+      
+    - name : Install Packages 
+      run : pip install pytest
+      
+    - name : Run tests 
+      run:  echo "Run ${{ github.event.inputs.environment}}"
+            pytest test.py
